@@ -15,6 +15,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { DATAS } from "@/datas/datas";
@@ -33,8 +34,208 @@ import {
 import { useState } from "react";
 import { http } from "@/helpers/axios";
 import { Input } from "@/components/ui/input";
-import { ArrowUpDown } from "lucide-react";
-import { DialogClose } from "@radix-ui/react-dialog";
+import { ArrowUpDown, CalendarIcon } from "lucide-react";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Calendar } from "@/components/ui/calendar";
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+
+const formSchema = z.object({
+  name: z
+    .string()
+    .min(3, { error: "Field nama diperlukan, isi minimal 3 karakter." }),
+  NIK: z
+    .string()
+    .min(16, { error: "Field NIK diperlukan, isi 16 karakter." })
+    .max(16, { error: "Field NIK diperlukan, isi 16 karakter." }),
+  diagnosis: z.string().min(5, {
+    error: "Field diagnosa masuk diperlukan, isi minimal 5 karakter.",
+  }),
+  checkin_date: z.date({ error: "Field tanggal masuk diperlukan." }),
+  doctor: z.string().min(5, {
+    error: "Field dokter penanggung jawab diperlukan, isi minimal 5 karakter.",
+  }),
+  room: z.string({ error: "Field ruangan diperlukan." }),
+});
+
+export function HealthForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      NIK: "",
+      diagnosis: "",
+      checkin_date: undefined,
+      doctor: "",
+      room: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+  }
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Tambah Pasien Masuk</Button>
+      </DialogTrigger>
+      <Form {...form}>
+        <DialogContent className="sm:max-w-2xl">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <DialogHeader>
+              <DialogTitle>Formulir pasien masuk</DialogTitle>
+              <DialogDescription>
+                Masukkan data-data pasien baru disini. Cek kembali sebelum
+                submit.
+              </DialogDescription>
+            </DialogHeader>
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Nama</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Input nama pasien disini..."
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="NIK"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>NIK</FormLabel>
+                  <FormControl>
+                    <Input placeholder="320......" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="diagnosis"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Diagnosa Masuk</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Input diagnosa disini..." {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="checkin_date"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel>Tanggal Masuk</FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "w-[240px] pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? (
+                            new Date(field.value).toLocaleDateString("id-ID")
+                          ) : (
+                            <span>Ambil tanggal</span>
+                          )}
+                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={(date) =>
+                          date > new Date() || date < new Date("1900-01-01")
+                        }
+                        captionLayout="dropdown"
+                      />
+                    </PopoverContent>
+                  </Popover>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="doctor"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Dokter Penanggung Jawab</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Input dokter penanggungjawab disini..."
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="room"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Ruangan</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Input ruangan pasien disini..."
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button variant="outline">Keluar</Button>
+              </DialogClose>
+              <Button type="submit">Tambahkan data</Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Form>
+    </Dialog>
+  );
+}
 
 // ====================================
 
@@ -138,42 +339,7 @@ export default function HomePage() {
         className="max-w-sm"
       />
       {/* FORMULIR */}
-      <Dialog>
-        <form>
-          <DialogTrigger asChild>
-            <Button variant="outline">Open Dialog</Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Edit profile</DialogTitle>
-              <DialogDescription>
-                Make changes to your profile here. Click save when you&apos;re
-                done.
-              </DialogDescription>
-            </DialogHeader>
-            <div className="grid gap-4">
-              <div className="grid gap-3">
-                <Label htmlFor="name-1">Name</Label>
-                <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="username-1">Username</Label>
-                <Input
-                  id="username-1"
-                  name="username"
-                  defaultValue="@peduarte"
-                />
-              </div>
-            </div>
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button variant="outline">Cancel</Button>
-              </DialogClose>
-              <Button type="submit">Save changes</Button>
-            </DialogFooter>
-          </DialogContent>
-        </form>
-      </Dialog>
+      <HealthForm />
       {/*  */}
 
       {!loading ? (
