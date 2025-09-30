@@ -1,5 +1,4 @@
-import type { TableEntity } from "@/types/table";
-import { flexRender, type Table as TableType } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 import {
   Table,
   TableBody,
@@ -9,12 +8,10 @@ import {
   TableRow,
 } from "./ui/table";
 import { Columns } from "lucide-react";
+import { UseTableContext } from "@/contexts/TableContext";
 
-export default function DataTable({
-  table,
-}: {
-  table: TableType<TableEntity>;
-}) {
+export default function DataTable() {
+  const { table } = UseTableContext();
   return (
     <Table>
       <TableHeader>
