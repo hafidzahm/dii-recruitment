@@ -36,6 +36,8 @@ import { Input } from "@/components/ui/input";
 import { ArrowUpDown } from "lucide-react";
 import { DialogClose } from "@radix-ui/react-dialog";
 
+// ====================================
+
 const columnHelper = createColumnHelper<TableEntity>();
 
 const columns = [
@@ -135,6 +137,7 @@ export default function HomePage() {
         }}
         className="max-w-sm"
       />
+      {/* FORMULIR */}
       <Dialog>
         <form>
           <DialogTrigger asChild>
@@ -171,8 +174,11 @@ export default function HomePage() {
           </DialogContent>
         </form>
       </Dialog>
+      {/*  */}
+
       {!loading ? (
         <div className="overflow-hidden rounded-md border">
+          {/* TABEL */}
           <Table>
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
@@ -219,6 +225,8 @@ export default function HomePage() {
               )}
             </TableBody>
           </Table>
+          {/*  */}
+          {/* PAGINATION */}
           <div className="flex items-center justify-end space-x-2 py-4">
             <Button
               variant="outline"
@@ -237,8 +245,10 @@ export default function HomePage() {
               Berikutnya
             </Button>
           </div>
+          {/*  */}
         </div>
       ) : (
+        // LOADING
         <p>loading...</p>
       )}
     </div>
