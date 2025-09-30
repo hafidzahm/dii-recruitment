@@ -1,12 +1,8 @@
-import type { Table } from "@tanstack/react-table";
 import { Input } from "./ui/input";
-import type { TableEntity } from "@/types/table";
+import { UseTableContext } from "@/contexts/TableContext";
 
-export default function FilterTableSearch({
-  table,
-}: {
-  table: Table<TableEntity>;
-}) {
+export default function FilterTableSearch() {
+  const { table } = UseTableContext();
   return (
     <Input
       placeholder="Cari nama pasien atau NIK..."
