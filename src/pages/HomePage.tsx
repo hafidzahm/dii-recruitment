@@ -15,18 +15,31 @@ import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
+  type SortingState,
   useReactTable,
   type ColumnFiltersState,
 } from "@tanstack/react-table";
 import { useState } from "react";
 import { http } from "@/helpers/axios";
 import { Input } from "@/components/ui/input";
+import { ArrowUpDown } from "lucide-react";
 
 const columnHelper = createColumnHelper<TableEntity>();
 
 const columns = [
   columnHelper.accessor("name", {
-    header: () => "Nama",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Nama
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("NIK", {
@@ -38,7 +51,17 @@ const columns = [
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("checkin_date", {
-    header: () => "Tanggal Masuk",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Tanggal Masuk
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
     cell: (info) => new Date(info.getValue()).toLocaleDateString("id-ID"),
   }),
   columnHelper.accessor("doctor", {
@@ -55,6 +78,7 @@ export default function HomePage() {
   const [data, setData] = useState(DATAS);
   const [loading, setLoading] = useState(false);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [sorting, setSorting] = useState<SortingState>([]);
   useState(() => {
     fetchData();
   });
@@ -81,7 +105,10 @@ export default function HomePage() {
     getPaginationRowModel: getPaginationRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
     state: {
+      sorting,
       columnFilters,
     },
   });
