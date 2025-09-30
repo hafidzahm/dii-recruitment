@@ -215,6 +215,15 @@
       "diagnosis": "Batuk Pilek",
       "doctor": "Dr. Marimaro Steviani Sp.Mm",
       "room": "Cempaka Putih"
+    },
+    {
+      "id": "4537",
+      "name": "Abdul Somad",
+      "NIK": "1234123412341234",
+      "checkin_date": "2025-09-24T17:00:00.000Z",
+      "diagnosis": "Batuk Pilek",
+      "doctor": "Dr. Marimaro Steviani Sp.Mm",
+      "room": "Cendana"
     }
   ]
 }
