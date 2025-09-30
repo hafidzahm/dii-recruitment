@@ -1,0 +1,164 @@
+{
+  "datas": [
+    {
+      "name": "Fuad Alatas",
+      "NIK": "3290128979081289",
+      "diagnosis": "Tifus",
+      "checkin_date": "2025-09-09",
+      "doctor": "Dr. Hasan Sadikin Sp.PD",
+      "room": "Melati"
+    },
+    {
+      "name": "Siti Rahmawati",
+      "NIK": "3201456789012345",
+      "diagnosis": "Demam Berdarah Dengue (DBD)",
+      "checkin_date": "2025-09-02",
+      "doctor": "Dr. Budi Santoso Sp.PD",
+      "room": "Anggrek"
+    },
+    {
+      "name": "Ahmad Fauzi",
+      "NIK": "3276123456789012",
+      "diagnosis": "Radang Paru (Pneumonia)",
+      "checkin_date": "2025-08-28",
+      "doctor": "Dr. Rina Marlina Sp.P",
+      "room": "Cempaka"
+    },
+    {
+      "name": "Nur Aisyah",
+      "NIK": "3210897654321098",
+      "diagnosis": "Malaria",
+      "checkin_date": "2025-08-21",
+      "doctor": "Dr. Joko Prasetyo Sp.PD",
+      "room": "Mawar"
+    },
+    {
+      "name": "Rizki Pratama",
+      "NIK": "3301987654321123",
+      "diagnosis": "Infeksi Saluran Pernapasan Akut (ISPA)",
+      "checkin_date": "2025-08-15",
+      "doctor": "Dr. Andi Kurniawan Sp.P",
+      "room": "Tulip"
+    },
+    {
+      "name": "Intan Permata",
+      "NIK": "3276789012345678",
+      "diagnosis": "Usus Buntu (Appendisitis)",
+      "checkin_date": "2025-08-07",
+      "doctor": "Dr. Dewi Anggraini Sp.B",
+      "room": "Melati"
+    },
+    {
+      "name": "Fajar Nugroho",
+      "NIK": "3223456789012765",
+      "diagnosis": "Maag (Gastritis)",
+      "checkin_date": "2025-07-30",
+      "doctor": "Dr. Lestari Handayani Sp.PD",
+      "room": "Cempaka"
+    },
+    {
+      "name": "Putri Maharani",
+      "NIK": "3245678901234567",
+      "diagnosis": "Asma",
+      "checkin_date": "2025-07-22",
+      "doctor": "Dr. Bambang Haryanto Sp.P",
+      "room": "Mawar"
+    },
+    {
+      "name": "Andika Saputra",
+      "NIK": "3298765432109876",
+      "diagnosis": "Hipertensi",
+      "checkin_date": "2025-07-12",
+      "doctor": "Dr. Sri Wahyuni Sp.PD",
+      "room": "Tulip"
+    },
+    {
+      "name": "Mega Sari",
+      "NIK": "3209876543212345",
+      "diagnosis": "Diabetes Melitus",
+      "checkin_date": "2025-07-05",
+      "doctor": "Dr. Firman Setiawan Sp.PD",
+      "room": "Anggrek"
+    },
+    {
+      "name": "Dedi Gunawan",
+      "NIK": "3234567890123456",
+      "diagnosis": "Stroke",
+      "checkin_date": "2025-06-27",
+      "doctor": "Dr. Arif Hidayat Sp.S",
+      "room": "Melati"
+    },
+    {
+      "name": "Kartika Dewi",
+      "NIK": "3267890123456789",
+      "diagnosis": "Migrain",
+      "checkin_date": "2025-06-18",
+      "doctor": "Dr. Yuniarti Sp.N",
+      "room": "Cempaka"
+    },
+    {
+      "name": "Bambang Triyono",
+      "NIK": "3289012345678901",
+      "diagnosis": "Tuberkulosis (TBC)",
+      "checkin_date": "2025-06-09",
+      "doctor": "Dr. Zulkifli Sp.P",
+      "room": "Mawar"
+    },
+    {
+      "name": "Dian Lestari",
+      "NIK": "3221098765432109",
+      "diagnosis": "Batu Ginjal",
+      "checkin_date": "2025-05-29",
+      "doctor": "Dr. Retno Susanti Sp.U",
+      "room": "Tulip"
+    },
+    {
+      "name": "Agus Salim",
+      "NIK": "3276543210987654",
+      "diagnosis": "Hepatitis A",
+      "checkin_date": "2025-05-20",
+      "doctor": "Dr. Hardi Santika Sp.PD",
+      "room": "Anggrek"
+    },
+    {
+      "name": "Maya Fitriani",
+      "NIK": "3256789012345678",
+      "diagnosis": "Bronkitis",
+      "checkin_date": "2025-04-15",
+      "doctor": "Dr. Rudi Hartono Sp.P",
+      "room": "Melati"
+    },
+    {
+      "name": "Yusuf Maulana",
+      "NIK": "3212345678901234",
+      "diagnosis": "Anemia",
+      "checkin_date": "2025-04-05",
+      "doctor": "Dr. Wulan Puspitasari Sp.PD",
+      "room": "Cempaka"
+    },
+    {
+      "name": "Lina Marlina",
+      "NIK": "3290123456789012",
+      "diagnosis": "Demam Tifoid",
+      "checkin_date": "2025-03-25",
+      "doctor": "Dr. Nanda Pramudita Sp.PD",
+      "room": "Mawar"
+    },
+    {
+      "name": "Hendra Wijaya",
+      "NIK": "3243210987654321",
+      "diagnosis": "Leptospirosis",
+      "checkin_date": "2025-02-12",
+      "doctor": "Dr. Ratna Dewi Sp.PD",
+      "room": "Tulip"
+    },
+    {
+      "name": "Selvi Oktaviani",
+      "NIK": "3232109876543210",
+      "diagnosis": "Asam Urat",
+      "checkin_date": "2025-01-30",
+      "doctor": "Dr. Irwan Saputra Sp.PD",
+      "room": "Anggrek"
+    }
+  ]
+}
