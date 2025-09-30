@@ -89,8 +89,20 @@ export function HealthForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await http.post("/datas", {
+        name: values.name,
+        NIK: values.NIK,
+        checkin_date: new Date(values.checkin_date).toISOString(),
+        diagnosis: values.diagnosis,
+        doctor: values.doctor,
+        room: values.room,
+      });
+      console.log(response, "<--- response");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -339,22 +351,28 @@ export default function HomePage() {
   });
 
   return (
-    <div>
-      <h1>data table here</h1>
-      <Input
-        placeholder="Cari nama pasien atau NIK..."
-        value={table.getState().globalFilter ?? ""}
-        onChange={(event) => {
-          table.setGlobalFilter(event.target.value);
-        }}
-        className="max-w-sm"
-      />
-      {/* FORMULIR */}
-      <HealthForm />
-      {/*  */}
+    <div className="w-full h-screen">
+      <div className="max-w-5xl m-auto">
+        <div className="p-5">
+          <h1 className="text-3xl">Pasien Masuk Rawat Inap</h1>
+        </div>
+        <div className="p-2">
+          <Input
+            placeholder="Cari nama pasien atau NIK..."
+            value={table.getState().globalFilter ?? ""}
+            onChange={(event) => {
+              table.setGlobalFilter(event.target.value);
+            }}
+            className="max-w-sm"
+          />
+          {/* FORMULIR */}
+          <HealthForm />
+          {/*  */}
+        </div>
+      </div>
 
       {!loading ? (
-        <div className="overflow-hidden rounded-md border">
+        <div className="overflow-hidden rounded-md border max-w-5xl m-auto">
           {/* TABEL */}
           <Table>
             <TableHeader>
@@ -426,7 +444,9 @@ export default function HomePage() {
         </div>
       ) : (
         // LOADING
-        <p>loading...</p>
+        <div className="max-w-5xl m-auto text-center pt-5">
+          <p>Sedang memperbarui data, harap tunggu...</p>
+        </div>
       )}
     </div>
   );

@@ -6,7 +6,8 @@
       "diagnosis": "Tifus",
       "checkin_date": "2025-09-09",
       "doctor": "Dr. Hasan Sadikin Sp.PD",
-      "room": "Melati"
+      "room": "Melati",
+      "id": "a62d"
     },
     {
       "name": "Siti Rahmawati",
@@ -14,7 +15,8 @@
       "diagnosis": "Demam Berdarah Dengue (DBD)",
       "checkin_date": "2025-09-02",
       "doctor": "Dr. Budi Santoso Sp.PD",
-      "room": "Anggrek"
+      "room": "Anggrek",
+      "id": "618f"
     },
     {
       "name": "Ahmad Fauzi",
@@ -22,7 +24,8 @@
       "diagnosis": "Radang Paru (Pneumonia)",
       "checkin_date": "2025-08-28",
       "doctor": "Dr. Rina Marlina Sp.P",
-      "room": "Cempaka"
+      "room": "Cempaka",
+      "id": "b9b8"
     },
     {
       "name": "Nur Aisyah",
@@ -30,7 +33,8 @@
       "diagnosis": "Malaria",
       "checkin_date": "2025-08-21",
       "doctor": "Dr. Joko Prasetyo Sp.PD",
-      "room": "Mawar"
+      "room": "Mawar",
+      "id": "8eee"
     },
     {
       "name": "Rizki Pratama",
@@ -38,7 +42,8 @@
       "diagnosis": "Infeksi Saluran Pernapasan Akut (ISPA)",
       "checkin_date": "2025-08-15",
       "doctor": "Dr. Andi Kurniawan Sp.P",
-      "room": "Tulip"
+      "room": "Tulip",
+      "id": "c9ec"
     },
     {
       "name": "Intan Permata",
@@ -46,7 +51,8 @@
       "diagnosis": "Usus Buntu (Appendisitis)",
       "checkin_date": "2025-08-07",
       "doctor": "Dr. Dewi Anggraini Sp.B",
-      "room": "Melati"
+      "room": "Melati",
+      "id": "b227"
     },
     {
       "name": "Fajar Nugroho",
@@ -54,7 +60,8 @@
       "diagnosis": "Maag (Gastritis)",
       "checkin_date": "2025-07-30",
       "doctor": "Dr. Lestari Handayani Sp.PD",
-      "room": "Cempaka"
+      "room": "Cempaka",
+      "id": "2dfd"
     },
     {
       "name": "Putri Maharani",
@@ -62,7 +69,8 @@
       "diagnosis": "Asma",
       "checkin_date": "2025-07-22",
       "doctor": "Dr. Bambang Haryanto Sp.P",
-      "room": "Mawar"
+      "room": "Mawar",
+      "id": "aafb"
     },
     {
       "name": "Andika Saputra",
@@ -70,7 +78,8 @@
       "diagnosis": "Hipertensi",
       "checkin_date": "2025-07-12",
       "doctor": "Dr. Sri Wahyuni Sp.PD",
-      "room": "Tulip"
+      "room": "Tulip",
+      "id": "5271"
     },
     {
       "name": "Mega Sari",
@@ -78,7 +87,8 @@
       "diagnosis": "Diabetes Melitus",
       "checkin_date": "2025-07-05",
       "doctor": "Dr. Firman Setiawan Sp.PD",
-      "room": "Anggrek"
+      "room": "Anggrek",
+      "id": "de7c"
     },
     {
       "name": "Dedi Gunawan",
@@ -86,7 +96,8 @@
       "diagnosis": "Stroke",
       "checkin_date": "2025-06-27",
       "doctor": "Dr. Arif Hidayat Sp.S",
-      "room": "Melati"
+      "room": "Melati",
+      "id": "591f"
     },
     {
       "name": "Kartika Dewi",
@@ -94,7 +105,8 @@
       "diagnosis": "Migrain",
       "checkin_date": "2025-06-18",
       "doctor": "Dr. Yuniarti Sp.N",
-      "room": "Cempaka"
+      "room": "Cempaka",
+      "id": "032c"
     },
     {
       "name": "Bambang Triyono",
@@ -102,7 +114,8 @@
       "diagnosis": "Tuberkulosis (TBC)",
       "checkin_date": "2025-06-09",
       "doctor": "Dr. Zulkifli Sp.P",
-      "room": "Mawar"
+      "room": "Mawar",
+      "id": "ff19"
     },
     {
       "name": "Dian Lestari",
@@ -110,7 +123,8 @@
       "diagnosis": "Batu Ginjal",
       "checkin_date": "2025-05-29",
       "doctor": "Dr. Retno Susanti Sp.U",
-      "room": "Tulip"
+      "room": "Tulip",
+      "id": "2586"
     },
     {
       "name": "Agus Salim",
@@ -118,7 +132,8 @@
       "diagnosis": "Hepatitis A",
       "checkin_date": "2025-05-20",
       "doctor": "Dr. Hardi Santika Sp.PD",
-      "room": "Anggrek"
+      "room": "Anggrek",
+      "id": "928e"
     },
     {
       "name": "Maya Fitriani",
@@ -126,7 +141,8 @@
       "diagnosis": "Bronkitis",
       "checkin_date": "2025-04-15",
       "doctor": "Dr. Rudi Hartono Sp.P",
-      "room": "Melati"
+      "room": "Melati",
+      "id": "748f"
     },
     {
       "name": "Yusuf Maulana",
@@ -134,7 +150,8 @@
       "diagnosis": "Anemia",
       "checkin_date": "2025-04-05",
       "doctor": "Dr. Wulan Puspitasari Sp.PD",
-      "room": "Cempaka"
+      "room": "Cempaka",
+      "id": "767f"
     },
     {
       "name": "Lina Marlina",
@@ -142,7 +159,8 @@
       "diagnosis": "Demam Tifoid",
       "checkin_date": "2025-03-25",
       "doctor": "Dr. Nanda Pramudita Sp.PD",
-      "room": "Mawar"
+      "room": "Mawar",
+      "id": "a8ca"
     },
     {
       "name": "Hendra Wijaya",
@@ -150,7 +168,8 @@
       "diagnosis": "Leptospirosis",
       "checkin_date": "2025-02-12",
       "doctor": "Dr. Ratna Dewi Sp.PD",
-      "room": "Tulip"
+      "room": "Tulip",
+      "id": "9600"
     },
     {
       "name": "Selvi Oktaviani",
@@ -158,7 +177,17 @@
       "diagnosis": "Asam Urat",
       "checkin_date": "2025-01-30",
       "doctor": "Dr. Irwan Saputra Sp.PD",
-      "room": "Anggrek"
+      "room": "Anggrek",
+      "id": "e350"
+    },
+    {
+      "id": "d16d",
+      "name": "Alika Irawati",
+      "NIK": "1234123412341234",
+      "checkin_date": "2025-09-29T17:00:00.000Z",
+      "diagnosis": "Demam Panas",
+      "doctor": "Dr. Min Sp. GG",
+      "room": "Cendana"
     }
   ]
 }
