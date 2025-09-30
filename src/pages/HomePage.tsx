@@ -13,8 +13,10 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
+  type ColumnFiltersState,
 } from "@tanstack/react-table";
 import { useState } from "react";
 import { http } from "@/helpers/axios";
@@ -52,6 +54,7 @@ const columns = [
 export default function HomePage() {
   const [data, setData] = useState(DATAS);
   const [loading, setLoading] = useState(false);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   useState(() => {
     fetchData();
   });
@@ -76,17 +79,21 @@ export default function HomePage() {
     debugTable: true,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      columnFilters,
+    },
   });
 
   return (
     <div>
       <h1>data table here</h1>
       <Input
-        placeholder="Cari nama pasien..."
-        value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+        placeholder="Cari nama pasien atau NIK..."
+        value={table.getState().globalFilter ?? ""}
         onChange={(event) => {
-          table.getColumn("name")?.setFilterValue(event.target.value);
-          console.log(event.target.value);
+          table.setGlobalFilter(event.target.value);
         }}
         className="max-w-sm"
       />
