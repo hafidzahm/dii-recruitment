@@ -34,6 +34,7 @@ import {
 import { useState } from "react";
 import { http } from "@/helpers/axios";
 import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowUpDown, CalendarIcon } from "lucide-react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
@@ -72,7 +73,7 @@ const formSchema = z.object({
   doctor: z.string().min(5, {
     error: "Field dokter penanggung jawab diperlukan, isi minimal 5 karakter.",
   }),
-  room: z.string({ error: "Field ruangan diperlukan." }),
+  room: z.string().min(1, { error: "Field ruangan diperlukan." }),
 });
 
 export function HealthForm() {
@@ -97,6 +98,7 @@ export function HealthForm() {
       <DialogTrigger asChild>
         <Button variant="outline">Tambah Pasien Masuk</Button>
       </DialogTrigger>
+
       <Form {...form}>
         <DialogContent className="sm:max-w-2xl">
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -107,123 +109,132 @@ export function HealthForm() {
                 submit.
               </DialogDescription>
             </DialogHeader>
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Nama</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Input nama pasien disini..."
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="NIK"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>NIK</FormLabel>
-                  <FormControl>
-                    <Input placeholder="320......" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="diagnosis"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Diagnosa Masuk</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Input diagnosa disini..." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="checkin_date"
-              render={({ field }) => (
-                <FormItem className="flex flex-col">
-                  <FormLabel>Tanggal Masuk</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
+            <ScrollArea className="h-90">
+              <div className="grid gap-5">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Nama</FormLabel>
                       <FormControl>
-                        <Button
-                          variant={"outline"}
-                          className={cn(
-                            "w-[240px] pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                          )}
-                        >
-                          {field.value ? (
-                            new Date(field.value).toLocaleDateString("id-ID")
-                          ) : (
-                            <span>Ambil tanggal</span>
-                          )}
-                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
+                        <Input
+                          placeholder="Input nama pasien disini..."
+                          {...field}
+                        />
                       </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
-                        captionLayout="dropdown"
-                      />
-                    </PopoverContent>
-                  </Popover>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="doctor"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Dokter Penanggung Jawab</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Input dokter penanggungjawab disini..."
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="room"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Ruangan</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Input ruangan pasien disini..."
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                <FormField
+                  control={form.control}
+                  name="NIK"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>NIK</FormLabel>
+                      <FormControl>
+                        <Input placeholder="320......" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="diagnosis"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Diagnosa Masuk</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Input diagnosa disini..."
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="checkin_date"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel>Tanggal Masuk</FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant={"outline"}
+                              className={cn(
+                                "w-[240px] pl-3 text-left font-normal",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                new Date(field.value).toLocaleDateString(
+                                  "id-ID"
+                                )
+                              ) : (
+                                <span>Ambil tanggal</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={field.value}
+                            onSelect={field.onChange}
+                            disabled={(date) =>
+                              date > new Date() || date < new Date("1900-01-01")
+                            }
+                            captionLayout="dropdown"
+                          />
+                        </PopoverContent>
+                      </Popover>
 
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="doctor"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Dokter Penanggung Jawab</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Input dokter penanggungjawab disini..."
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="room"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Ruangan</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Input ruangan pasien disini..."
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </ScrollArea>
             <DialogFooter>
               <DialogClose asChild>
                 <Button variant="outline">Keluar</Button>
