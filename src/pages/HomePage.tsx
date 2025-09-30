@@ -32,7 +32,7 @@ import {
   type ColumnFiltersState,
   type Table as TableType,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { http } from "@/helpers/axios";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -60,96 +60,12 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { useNavigate } from "react-router";
 import HealthForm from "@/components/ui/HealthForm/HealthForm";
+import { UseTableContext } from "@/contexts/TableContext";
 
 // ====================================
 
-const columnHelper = createColumnHelper<TableEntity>();
-
-const columns = [
-  columnHelper.accessor("name", {
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Nama
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("NIK", {
-    header: () => "NIK",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("diagnosis", {
-    header: () => "Diagnosa Masuk",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("checkin_date", {
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Tanggal Masuk
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: (info) => new Date(info.getValue()).toLocaleDateString("id-ID"),
-  }),
-  columnHelper.accessor("doctor", {
-    header: () => "Dokter Penanggung Jawab",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("room", {
-    header: () => "Ruangan",
-    cell: (info) => info.getValue(),
-  }),
-];
-
 export default function HomePage() {
-  const [data, setData] = useState(DATAS);
-  const [loading, setLoading] = useState(false);
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [sorting, setSorting] = useState<SortingState>([]);
-  useState(() => {
-    fetchData();
-  });
-
-  async function fetchData() {
-    try {
-      setLoading(true);
-
-      const response = await http.get("/datas");
-      console.log(response.data);
-      setData(response.data);
-
-      setTimeout(() => setLoading(false), 2000);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  }
-  const table = useReactTable({
-    data,
-    columns,
-    debugTable: true,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getFilteredRowModel: getFilteredRowModel(),
-    onSortingChange: setSorting,
-    getSortedRowModel: getSortedRowModel(),
-    state: {
-      sorting,
-      columnFilters,
-    },
-  });
+  const { table, loading } = UseTableContext();
 
   return (
     <div className="w-full h-screen">
