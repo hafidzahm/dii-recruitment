@@ -15,7 +15,7 @@ export default function HomePage() {
           <DataTable />
           {/*  */}
           {/* PAGINATION */}
-          <PaginationComponent table={table} />
+          <PaginationComponent />
           {/*  */}
         </div>
       ) : (

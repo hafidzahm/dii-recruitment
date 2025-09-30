@@ -1,12 +1,8 @@
-import type { Table } from "@tanstack/react-table";
 import { Button } from "./ui/button";
-import type { TableEntity } from "@/types/table";
+import { UseTableContext } from "@/contexts/TableContext";
 
-export default function PaginationComponent({
-  table,
-}: {
-  table: Table<TableEntity>;
-}) {
+export default function PaginationComponent() {
+  const { table } = UseTableContext();
   return (
     <div className="flex items-center justify-end space-x-2 py-4">
       <Button
