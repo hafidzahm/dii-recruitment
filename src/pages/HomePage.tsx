@@ -167,7 +167,7 @@ export default function HomePage() {
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Hasil tidak ditemukan.
                 </TableCell>
               )}
             </TableBody>
@@ -179,7 +179,7 @@ export default function HomePage() {
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
-              Previoustable
+              Sebelumnya
             </Button>
             <Button
               variant="outline"
@@ -187,7 +187,7 @@ export default function HomePage() {
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >
-              Next
+              Berikutnya
             </Button>
           </div>
         </div>
