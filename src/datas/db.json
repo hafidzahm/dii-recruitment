@@ -188,6 +188,33 @@
       "diagnosis": "Demam Panas",
       "doctor": "Dr. Min Sp. GG",
       "room": "Cendana"
+    },
+    {
+      "id": "340f",
+      "name": "Marimar",
+      "NIK": "1234123412341234",
+      "checkin_date": "2025-09-29T17:00:00.000Z",
+      "diagnosis": "Typhus",
+      "doctor": "Dr. Marimaro Steviani Sp.Mm",
+      "room": "Melati Alibaba"
+    },
+    {
+      "id": "590d",
+      "name": "WInnie the Pooh",
+      "NIK": "1234123412341234",
+      "checkin_date": "2025-09-29T17:00:00.000Z",
+      "diagnosis": "LIeur",
+      "doctor": "Dr. Marimaro Steviani Sp.Mm",
+      "room": "Melati"
+    },
+    {
+      "id": "c772",
+      "name": "Fuad Alamiyyah",
+      "NIK": "1234123412341234",
+      "checkin_date": "2025-09-29T17:00:00.000Z",
+      "diagnosis": "Batuk Pilek",
+      "doctor": "Dr. Marimaro Steviani Sp.Mm",
+      "room": "Cempaka Putih"
     }
   ]
 }

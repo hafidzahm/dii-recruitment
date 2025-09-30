@@ -57,6 +57,7 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { useNavigate } from "react-router";
 
 const formSchema = z.object({
   name: z
@@ -77,6 +78,8 @@ const formSchema = z.object({
 });
 
 export function HealthForm() {
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -99,6 +102,10 @@ export function HealthForm() {
         doctor: values.doctor,
         room: values.room,
       });
+      if (response.status === 201) {
+        setOpen(false);
+      }
+      navigate(0);
       console.log(response, "<--- response");
     } catch (error) {
       console.log(error);
@@ -106,7 +113,7 @@ export function HealthForm() {
   }
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">Tambah Pasien Masuk</Button>
       </DialogTrigger>
