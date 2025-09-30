@@ -224,6 +224,15 @@
       "diagnosis": "Batuk Pilek",
       "doctor": "Dr. Marimaro Steviani Sp.Mm",
       "room": "Cendana"
+    },
+    {
+      "id": "5593",
+      "name": "Fuad Ahmadi",
+      "NIK": "1234123412341234",
+      "checkin_date": "2025-09-29T17:00:00.000Z",
+      "diagnosis": "Batuk Pilek",
+      "doctor": "Dr. Marimaro Steviani Sp.Mm",
+      "room": "Anggrek Ungu"
     }
   ]
 }
